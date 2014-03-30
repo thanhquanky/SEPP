@@ -11,7 +11,7 @@ navigator.geolocation.getCurrentPosition(function(pos) {
     //var latlongQuery = "?lat=" + coords.latitude + "&long=" + coords.longitude;
     var lat = coords.latitude;
     var lng = coords.longitute;
-    var walkscore_api = api + "walkscore/?lat=" + lat + "&long=" + lng;
+    var walkscore_api = "http://unispon.com/hackduke/index.php/sepp/walkscore/?lat=" + lat + "&long=" + lng;
     ajax({ url: testUrl, type: 'json' }, function(data) {
         simply.text({ title: "Walkscore:" + data.walkscore , subtitle: data.message });
         if (data.workscore > 50) {
