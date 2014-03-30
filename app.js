@@ -1,5 +1,6 @@
 navigator.geolocation.getCurrentPosition(function(pos) {
   var coords = pos.coords;
+  localStorage.set('coords', coords);
   //var latlongQuery = "?lat=" + coords.latitude + "&long=" + coords.longitude;
   var lat = coords.latitude;
   var long = coords.longiute;
@@ -36,10 +37,13 @@ simply.on('singleClick', function(e) {
   }
   if (count >= 5) {
       count = 0;
+      var coords = localStorage.get('coords');
+      var emergency_message = "I am in dangerous situation. Please call 911. My position is at " + coords.latitude + "," + coords.longitude;
       var emergency_call_api = "http://unispon.com/hackduke/index.php/sepp/call";
-      var emergency_text_api = "http://unispon.com/hackduke/index.php/sepp/text/?message=Helpppp!";
+      var emergency_text_api = "http://unispon.com/hackduke/index.php/sepp/text/?message=" + emergency_message;
 
       ajax({ url: emergency_text_api, type: 'json' }, function(data) {
+          
           simply.subtitle('Getting emergency!!!');
       });
   }
