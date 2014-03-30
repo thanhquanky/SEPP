@@ -13,9 +13,9 @@ function polling_walkscore(milliseconds) {
       ajax({ url: testUrl, type: 'json' }, function(data) {
           var last = localStorage.getItem('lastTime');
           if (last === null) {
-            last = now();
+            last = Date.now();
           }
-          delta = now() - last;
+          delta = Date.now() - last;
   
           localStorage.setItem('lastTime', now());
           simply.text({ title: "Walkscore: " + data.walkscore , subtitle: data.message + "Last update: " + delta + " s"});
