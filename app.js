@@ -2,7 +2,7 @@
 
 */
 
-var api = "http://unispon.com/hackduke/index.php/sepp/"
+var api = "http://unispon.com/hackduke/index.php/sepp/";
 
 navigator.geolocation.getCurrentPosition(function(pos) {
     var coords = pos.coords;
