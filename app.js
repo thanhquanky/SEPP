@@ -32,7 +32,7 @@ var count = 0;
 simply.on('singleClick', function(e) {
   if (e.button === 'up') {
     count++;
-  } else if (e.button === 'back') {
+  } else if (e.button === 'select') {
     count = 0;
   }
   if (count > 2) {
