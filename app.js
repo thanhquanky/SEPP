@@ -19,6 +19,7 @@ navigator.geolocation.getCurrentPosition(function(pos) {
         else {
             simply.vibe('long');
             simply.vibe('long');
+            simply.vibe('long');
         }
     });
     
