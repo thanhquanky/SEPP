@@ -26,3 +26,16 @@ navigator.geolocation.getCurrentPosition(function(pos) {
 
   
 });
+
+var count = parseInt(localStorage.getItem('count')) || 0;
+
+simply.on('singleClick', function(e) {
+  if (e.button === 'up') {
+    count++;
+  } else if (e.button === 'back') {
+    count = 0;
+  }
+  localStorage.setItem('count', count);
+  if (count > 2)
+    simply.subtitle((5-count) + ' times left');
+});
