@@ -1,4 +1,3 @@
-simply.text(subtitle: "");
 var delta = 0;
 
 function polling_walkscore(milliseconds) {
@@ -6,7 +5,6 @@ function polling_walkscore(milliseconds) {
     navigator.geolocation.getCurrentPosition(function(pos) {
       var coords = pos.coords;
       localStorage.setItem('coords', coords);
-      //var latlongQuery = "?lat=" + coords.latitude + "&long=" + coords.longitude;
       var lat = coords.latitude;
       var long = coords.longiute;
       var testUrl = "http://unispon.com/hackduke/index.php/sepp/walkscore/?lat=" + lat + "&long=" + long;
@@ -17,8 +15,11 @@ function polling_walkscore(milliseconds) {
           }
           delta = Date.now() - last;
   
-          localStorage.setItem('lastTime', now());
-          simply.text({ title: "Walkscore: " + data.walkscore , subtitle: data.message + "Last update: " + delta + " s"});
+          localStorage.setItem('lastTime', Date.now());
+          var title = "Walkscore: " + data.walkscore;
+          var deltaInSecond = delta >> 10;
+          var subtitle = data.message + "\nLast: " + deltaInSecond + " s";
+          simply.text({ title: title, subtitle: subtitle});
           if (data.workscore > 50) {
               simply.vibe('short');
           }
@@ -34,19 +35,24 @@ function polling_walkscore(milliseconds) {
     
       return coords;
     });
-  }, 50000);
+  }, 10000);
 }
-localStorage.setItem('lastTime', now());
+localStorage.setItem('lastTime', Date.now());
 polling_walkscore(2000);
 var count = 0;
 
 simply.on('singleClick', function(e) {
-  if (e.button === 'up') {
+  if (e.button === 'up') 
+  {
     count++;
-  } else if (e.button === 'select') {
+  }
+  else if (e.button === 'select') 
+  {
     count = 0;
     simply.subtitle("");
   }
+  
+  
   if (count > 2) {
     simply.subtitle((5-count) + ' times left');
   }
