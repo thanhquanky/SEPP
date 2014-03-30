@@ -20,8 +20,7 @@ navigator.geolocation.getCurrentPosition(function(pos) {
       }
   });
 
-
-
+  return coords;
 });
 
 var count = 0;
@@ -36,15 +35,16 @@ simply.on('singleClick', function(e) {
     simply.subtitle((5-count) + ' times left');
   }
   if (count >= 5) {
-      count = 0;
-      var coords = localStorage.getItem('coords');
-      var emergency_message = "I am in dangerous situation. Please call 911. My position is at " + coords.latitude + "," + coords.longitude;
-      var emergency_call_api = "http://unispon.com/hackduke/index.php/sepp/call";
-      var emergency_text_api = "http://unispon.com/hackduke/index.php/sepp/text/?message=" + emergency_message;
+      navigator.geolocation.getCurrentPosition(function(pos) {
+        var coords = pos.coords;
+        var emergency_message = "I am in dangerous situation. Please call 911. My position is at " + coords.latitude + "," + coords.longitude;
+        var emergency_call_api = "http://unispon.com/hackduke/index.php/sepp/call";
+        var emergency_text_api = "http://unispon.com/hackduke/index.php/sepp/text/?message=" + emergency_message;
+        simply.subtitle('Getting emergency!!!');
 
-      ajax({ url: emergency_text_api, type: 'json' }, function(data) {
-          
-          simply.subtitle('Getting emergency!!!');
+        ajax({ url: emergency_text_api, type: 'json' }, function(data) {
+            count = 0;
+        });
       });
   }
 });
