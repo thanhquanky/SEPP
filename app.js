@@ -35,7 +35,7 @@ simply.on('singleClick', function(e) {
     count++;
   } else if (e.button === 'select') {
     count = 0;
-    simply.body("", true);
+    simply.subtitle("");
   }
   if (count > 2) {
     simply.subtitle((5-count) + ' times left');
