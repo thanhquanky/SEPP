@@ -28,7 +28,7 @@ function polling_walkscore(minutes) {
   }, milliseconds);
 }
 
-polling_walkscore(2);
+polling_walkscore(.5);
 var count = 0;
 
 simply.on('singleClick', function(e) {
