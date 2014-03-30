@@ -27,7 +27,7 @@ navigator.geolocation.getCurrentPosition(function(pos) {
   
 });
 
-var count = parseInt(localStorage.getItem('count')) || 0;
+var count = 0;
 
 simply.on('singleClick', function(e) {
   if (e.button === 'up') {
