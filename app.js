@@ -17,9 +17,8 @@ navigator.geolocation.getCurrentPosition(function(pos) {
             simply.vibe('long');
         }
         else {
-            simply.vibe('double');
-            simply.vibe('double');
-            simply.vibe('double');
+            simply.vibe('long');
+            simply.vibe('long');
         }
     });
     
