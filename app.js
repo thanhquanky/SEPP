@@ -1,3 +1,6 @@
+simply.text(subtitle: "");
+var delta = 0;
+
 function polling_walkscore(milliseconds) {
   setInterval(function() {
     navigator.geolocation.getCurrentPosition(function(pos) {
@@ -8,7 +11,14 @@ function polling_walkscore(milliseconds) {
       var long = coords.longiute;
       var testUrl = "http://unispon.com/hackduke/index.php/sepp/walkscore/?lat=" + lat + "&long=" + long;
       ajax({ url: testUrl, type: 'json' }, function(data) {
-          simply.text({ title: "Walkscore:" + data.walkscore , subtitle: data.message });
+          var last = localStorage.getItem('lastTime');
+          if (last === null) {
+            last = now();
+          }
+          delta = now() - last;
+  
+          localStorage.setItem('lastTime', now());
+          simply.text({ title: "Walkscore:" + data.walkscore , subtitle: data.message + "Last update: " + delta + " s"});
           if (data.workscore > 50) {
               simply.vibe('short');
           }
@@ -24,9 +34,9 @@ function polling_walkscore(milliseconds) {
     
       return coords;
     });
-  }, 10000);
+  }, 50000);
 }
-
+localStorage.setItem('lastTime', now());
 polling_walkscore(2000);
 var count = 0;
 
@@ -35,7 +45,7 @@ simply.on('singleClick', function(e) {
     count++;
   } else if (e.button === 'select') {
     count = 0;
-    simply.body("", TRUE);
+    simply.subtitle("");
   }
   if (count > 2) {
     simply.subtitle((5-count) + ' times left');
