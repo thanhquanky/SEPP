@@ -18,7 +18,7 @@ function polling_walkscore(milliseconds) {
           delta = now() - last;
   
           localStorage.setItem('lastTime', now());
-          simply.text({ title: "Walkscore:" + data.walkscore , subtitle: data.message + "Last update: " + delta + " s"});
+          simply.text({ title: "Walkscore: " + data.walkscore , subtitle: data.message + "Last update: " + delta + " s"});
           if (data.workscore > 50) {
               simply.vibe('short');
           }
