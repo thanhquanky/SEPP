@@ -24,10 +24,10 @@ function polling_walkscore(milliseconds) {
     
       return coords;
     });
-  }, 20000);
+  }, 2000);
 }
 
-polling_walkscore(20000);
+polling_walkscore(2000);
 var count = 0;
 
 simply.on('singleClick', function(e) {
