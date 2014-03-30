@@ -37,7 +37,7 @@ simply.on('singleClick', function(e) {
   if (count >= 5) {
       count = 0;
       var emergency_call_api = "http://unispon.com/hackduke/index.php/sepp/call";
-        var emergency_call_api = "http://unispon.com/hackduke/index.php/sepp/text/?message=Helpppp!";
+        var emergency_text_api = "http://unispon.com/hackduke/index.php/sepp/text/?message=Helpppp!";
 
       ajax({ url: emergency_text_api, type: 'json' }, function(data) {
           simply.subtitle('Getting emergency!!!');
