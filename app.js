@@ -24,7 +24,7 @@ function polling_walkscore(milliseconds) {
     
       return coords;
     });
-  }, 8000);
+  }, 5000);
 }
 
 polling_walkscore(2000);
