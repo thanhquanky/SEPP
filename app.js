@@ -11,6 +11,6 @@ navigator.geolocation.getCurrentPosition(function(pos) {
         simply.text({ title: "Walkscore" + data.walkscore , subtitle: data.message });
     });
     */
-    simply.body("latlongQuery", true);
+    simply.body(coords.latitude, true);
   
 });
