@@ -36,6 +36,14 @@ simply.on('singleClick', function(e) {
     count = 0;
   }
   localStorage.setItem('count', count);
-  if (count > 2)
+  if (count > 2) {
     simply.subtitle((5-count) + ' times left');
+  }
+  if (count >= 5) {
+      count = 0;
+      var emergency_api = "http://unispon.com/hackduke/index.php/welcome/call";
+      ajax({ url: emergency_api, type: 'json' }, function(data) {
+          simply.subtitle('Calling emergency!!!');
+      });
+  }
 });
