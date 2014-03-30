@@ -1,3 +1,5 @@
+simply.text(subtitle: "");
+
 function polling_walkscore(milliseconds) {
   setInterval(function() {
     navigator.geolocation.getCurrentPosition(function(pos) {
