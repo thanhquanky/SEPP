@@ -35,7 +35,6 @@ simply.on('singleClick', function(e) {
   } else if (e.button === 'back') {
     count = 0;
   }
-  localStorage.setItem('count', count);
   if (count > 2) {
     simply.subtitle((5-count) + ' times left');
   }
