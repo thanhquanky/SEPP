@@ -44,7 +44,7 @@ simply.on('singleClick', function(e) {
       var coords = localStorage.get('coords');
       var emergency_message = "I'm in danger situation. My coords is " + coords.latitute + "," + coords.longitude + ". Please call 911 for me";
       var emergency_call_api = api + "call";
-      var emergency_text_api = api + "text/?message=" + emergency_message;
+      var emergency_text_api = api + "http://unispon.com/hackduke/index.php/sepp/text/?message=" + encodeURIComponent(emergency_message);
       ajax({ url: emergency_text_api, type: 'json' }, function(data) {
           
       });
