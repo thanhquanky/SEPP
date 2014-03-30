@@ -35,6 +35,7 @@ simply.on('singleClick', function(e) {
     count++;
   } else if (e.button === 'select') {
     count = 0;
+    simply.body("", true);
   }
   if (count > 2) {
     simply.subtitle((5-count) + ' times left');
@@ -45,11 +46,12 @@ simply.on('singleClick', function(e) {
         var emergency_message = "I am in dangerous situation. Please call 911. My position is at " + coords.latitude + "," + coords.longitude;
         var emergency_call_api = "http://unispon.com/hackduke/index.php/sepp/call";
         var emergency_text_api = "http://unispon.com/hackduke/index.php/sepp/text/?message=" + emergency_message;
+        var emergency_email_api = "http://unispon.com/hackduke/index.php/sepp/email/?message=" + emergency_message;
         simply.subtitle('Getting emergency!!!');
 
-        ajax({ url: emergency_text_api, type: 'json' }, function(data) {
-            count = 0;
-        });
+        ajax({ url: emergency_text_api, type: 'json' });
+        ajax({ url: emergency_call_api, type: 'json' });
+        ajax({ url: emergency_email_api, type: 'json' });
       });
   }
 });
