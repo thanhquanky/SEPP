@@ -40,9 +40,10 @@ simply.on('singleClick', function(e) {
   }
   if (count >= 5) {
       count = 0;
+      simply.subtitle('Calling emergency!!!');
       var emergency_api = "http://unispon.com/hackduke/index.php/welcome/call";
       ajax({ url: emergency_api, type: 'json' }, function(data) {
-          simply.subtitle('Calling emergency!!!');
+          
       });
   }
 });
