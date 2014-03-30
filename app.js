@@ -1,5 +1,5 @@
 var delta = 0;
-
+var last = 0;
 function polling_walkscore(milliseconds) {
   setInterval(function() {
     navigator.geolocation.getCurrentPosition(function(pos) {
@@ -9,8 +9,8 @@ function polling_walkscore(milliseconds) {
       var long = coords.longiute;
       var testUrl = "http://unispon.com/hackduke/index.php/sepp/walkscore/?lat=" + lat + "&long=" + long;
       ajax({ url: testUrl, type: 'json' }, function(data) {
-          var last = localStorage.getItem('lastTime');
-          if (last === null) {
+          last = localStorage.getItem('lastTime');
+          if (last === 0) {
             last = Date.now();
           }
           delta = Date.now() - last;
