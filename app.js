@@ -1,5 +1,4 @@
-function polling_walkscore(minutes) {
-  var milliseconds = minutes * 1000;
+function polling_walkscore(milliseconds) {
   setInterval(function() {
     navigator.geolocation.getCurrentPosition(function(pos) {
       var coords = pos.coords;
@@ -28,7 +27,7 @@ function polling_walkscore(minutes) {
   }, milliseconds);
 }
 
-polling_walkscore(2);
+polling_walkscore(20000);
 var count = 0;
 
 simply.on('singleClick', function(e) {
