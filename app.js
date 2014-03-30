@@ -1,5 +1,3 @@
-simply.text(subtitle: "");
-
 function polling_walkscore(milliseconds) {
   setInterval(function() {
     navigator.geolocation.getCurrentPosition(function(pos) {
@@ -26,7 +24,7 @@ function polling_walkscore(milliseconds) {
     
       return coords;
     });
-  }, 50000);
+  }, 10000);
 }
 
 polling_walkscore(2000);
@@ -37,7 +35,7 @@ simply.on('singleClick', function(e) {
     count++;
   } else if (e.button === 'select') {
     count = 0;
-    simply.subtitle("");
+    simply.body("", TRUE);
   }
   if (count > 2) {
     simply.subtitle((5-count) + ' times left');
